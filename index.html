@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Website TPCN</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        body { background-color: #f5f5f5; font-family: Arial, sans-serif; }
+        .navbar { background-color: #28a745; }
+        .navbar a { color: white; }
+        .container { margin-top: 20px; }
+        .section { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">Cửa hàng TPCN</a>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="section" id="products">
+        <h2 class="text-center">Sản phẩm nổi bật</h2>
+        <ul class="list-group">
+            <li class="list-group-item">Vitamin C - 200,000 VND</li>
+            <li class="list-group-item">Omega 3 - 350,000 VND</li>
+            <li class="list-group-item">Collagen - 500,000 VND</li>
+        </ul>
+    </div>
+
+    <div class="section" id="reviews">
+        <h2 class="text-center">Đánh giá sản phẩm</h2>
+        <input type="text" id="review-text" class="form-control" placeholder="Viết đánh giá...">
+        <button class="btn btn-success mt-2" onclick="submitReview()">Gửi đánh giá</button>
+        <ul id="review-list" class="list-group mt-3"></ul>
+    </div>
+
+    <div class="section text-center">
+        <button class="btn btn-warning" onclick="applyDiscount()">Áp dụng mã giảm giá</button>
+        <button class="btn btn-primary" onclick="checkout()">Thanh toán</button>
+    </div>
+</div>
+
+<script>
+    function submitReview() {
+        const text = document.getElementById("review-text").value;
+        if (text) {
+            const li = document.createElement("li");
+            li.className = "list-group-item";
+            li.textContent = text;
+            document.getElementById("review-list").appendChild(li);
+            document.getElementById("review-text").value = "";
+            Swal.fire("Cảm ơn!", "Đánh giá của bạn đã được ghi nhận.", "success");
+        }
+    }
+
+    function applyDiscount() {
+        Swal.fire("Chúc mừng!", "Bạn được giảm 10%!", "success");
+    }
+
+    function checkout() {
+        Swal.fire("Thanh toán thành công!", "Cảm ơn bạn đã mua hàng.", "success");
+    }
+</script>
+</body>
+</html>
